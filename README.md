@@ -1,8 +1,13 @@
-![Banner](Images/banner.png?)
+<div align="center">
+  <br>
+  <img src="./spot.png" alt="Logo" width="200">
+  <br><br>
 
-# The original EeveeSpotify repository was disabled due to a [DMCA takedown](https://github.com/github/dmca/blob/master/2025/08/2025-08-14-spotify.md). This repository will not contain the IPA packages, as they are most likely the reason for the takedown.
+  <h1>heyFordy's Spotify+🗿</h1>
+  <h4>EeveeSpotify — Customized</h4>
+  <br>
 
-# EeveeSpotify
+</div>
 
 This tweak makes Spotify think you have a Premium subscription, granting free listening, just like Spotilife, and provides some additional features like custom lyrics.
 
