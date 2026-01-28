@@ -1,0 +1,90 @@
+name: "🌀 Patch & Release IPA"
+
+on:
+  workflow_dispatch:
+    inputs:
+      VERSION:
+        description: "Tweak Version to use for patching (e.g. 4.2.0)"
+        required: true
+        default: "6.2.2"
+      APP_VERSION:
+        description: "Target App Version for Output (e.g. 4.2.0)"
+        required: true
+        default: "6.2.2"
+
+env:
+  THEOS: ${{ github.workspace }}/theos
+  SWIFTPROTOBUF_VERSION: "1.29.0"
+
+jobs:
+  patch:
+    runs-on: macos-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: 🔍 Checkout repository
+        uses: actions/checkout@v4
+
+      - name: 🏗️ Setup Xcode
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: "16.2.0"
+
+      - name: 🛠️ Install Toolchain
+        run: |
+          brew install make dpkg ldid jq
+          pipx install --force https://github.com/SpotCompiled/pyzule-rw/archive/main.zip
+          pipx inject cyan Pillow
+
+      - name: 📥 Download src.ipa from tag "src"
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release download src -p "src.ipa" --repo ${{ github.repository }}
+
+      - name: 📥 Download Tweaks from tag v${{ inputs.VERSION }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release download v${{ inputs.VERSION }} -p "*.deb" --repo ${{ github.repository }}
+
+      - name: 🌐 Download Orion Runtime
+        run: |
+          curl -sSL https://repo.chariz.com/Packages -o Packages
+          FILENAME=$(awk 'BEGIN{RS="";FS="\n"} $1~/^Package: dev.theos.orion14$/ && $0~/Architecture: iphoneos-arm64/{for(i=1;i<=NF;i++){if($i~/^Filename:/){print $i}}}' Packages | tail -n1 | cut -d" " -f2)
+          curl -LO "https://repo.chariz.com/$FILENAME"
+          echo "ORION_DEB=$(basename "$FILENAME")" >> $GITHUB_ENV
+
+      - name: 🧩 Prepare SwiftProtobuf Deb
+        run: |
+          wget https://github.com/whoeevee/swift-protobuf/releases/download/${{ env.SWIFTPROTOBUF_VERSION }}/org.swift.protobuf.swiftprotobuf_${{ env.SWIFTPROTOBUF_VERSION }}_iphoneos-arm64.deb
+          echo "PROTO_DEB=org.swift.protobuf.swiftprotobuf_${{ env.SWIFTPROTOBUF_VERSION }}_iphoneos-arm64.deb" >> $GITHUB_ENV
+
+      - name: 🧭 Download Safari Extension
+        run: |
+          git clone https://github.com/BillyCurtis/OpenSpotifySafariExtension
+          echo "EXT_PATH=OpenSpotifySafariExtension/OpenSpotifySafariExtension.appex" >> $GITHUB_ENV
+
+      - name: 🧰 Patch IPA with Cyan
+        run: |
+          TWEAK_DEB=$(ls *iphoneos-arm64.deb | grep -v "swiftprotobuf" | grep -v "orion" | head -n1)
+          Cyan \
+            -i src.ipa \
+            -o "FordySpot_v${{ inputs.APP_VERSION }}.ipa" \
+            -v "${{ inputs.APP_VERSION }}" \
+            -n "Spotify+🗿" \
+            -b com.spotify.client \
+            -k spot.png \
+            -f "$TWEAK_DEB" "${{ env.ORION_DEB }}" "${{ env.PROTO_DEB }}" "${{ env.EXT_PATH }}" \
+            -u -w
+
+      - name: 🚀 Upload Final IPA
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ inputs.VERSION }}
+          name: "Spotify+🗿 - v${{ inputs.VERSION }}"
+          files: "FordySpot_v${{ inputs.APP_VERSION }}.ipa"
+          append_body: true
+        env:
+          GITHUB_TOKEN: ${{ github.token }}

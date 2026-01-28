@@ -9,7 +9,7 @@ class LrclibLyricsRepository: LyricsRepository {
         
         let configuration = URLSessionConfiguration.default
         configuration.httpAdditionalHeaders = [
-            "User-Agent": "EeveeSpotify v\(EeveeSpotify.version) https://github.com/whoeevee/EeveeSpotify"
+            "User-Agent": "EeveeSpotify v\(EeveeSpotify.version) https://github.com/Bitte-ein-Git/ios_spot"
         ]
         
         session = URLSession(configuration: configuration)

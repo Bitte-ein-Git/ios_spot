@@ -6,11 +6,15 @@ struct EeveeSettingsVersionView: View {
     
     private func loadVersion() async throws {
         let release = try await GitHubHelper.shared.getLatestRelease()
-        latestVersion = String(release.tagName.dropFirst(5)) // swiftX.X
+        // Remove prefixes to get pure version number
+        latestVersion = release.tagName
+            .replacingOccurrences(of: "swift", with: "")
+            .replacingOccurrences(of: "v", with: "")
     }
     
     private var isUpdateAvailable: Bool {
-        latestVersion != nil && latestVersion != EeveeSpotify.version
+        guard let latest = latestVersion else { return false }
+        return latest != EeveeSpotify.version
     }
     
     var body: some View {
@@ -18,7 +22,7 @@ struct EeveeSettingsVersionView: View {
             if isUpdateAvailable {
                 Link(
                     "update_available".localized,
-                    destination: URL(string: "https://github.com/whoeevee/EeveeSpotifyReborn/releases")!
+                    destination: URL(string: "https://github.com/Bitte-ein-Git/ios_spot/releases")!
                 )
             }
         } footer: {

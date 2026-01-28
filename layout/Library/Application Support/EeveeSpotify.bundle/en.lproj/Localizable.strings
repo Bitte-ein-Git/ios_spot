@@ -1,54 +1,54 @@
 /* MARK: Settings */
 
 patching = "Patching";
-lyrics = "Lyrics";
-customization = "Customization";
-experiments = "Experiments";
+lyrics = "Lyrics Source";
+customization = "UI Customizations";
+experiments = "Experimental";
 
-common_issues_tip_title = "Having Trouble?";
+common_issues_tip_title = "» heyFordy's Spotify+ 🗿";
 
-common_issues_tip_message = "If you are facing an issue, such as being unable to play any songs, check out";
-common_issues_tip_button = "Common Issues";
+common_issues_tip_message = "This is my customized version of the Spotify Premium mod \"EeveeSpotifyReborn\". You can find more apps in my";
+common_issues_tip_button = "SideStore Repository";
 
 reset_data = "Reset Data";
 reset_data_description = "Clear cached data and restart the app.";
 
-checking_for_update = "Checking for Update...";
-update_available = "Update Available";
+checking_for_update = "🌀 Checking for updates...";
+update_available = "🔸 Update available!";
 
-restart_is_required_description = "App restart is required after changing.";
+restart_is_required_description = "An app restart is required to apply the changes.";
 
 // Patching
 
-do_not_patch_premium = "Do Not Patch Premium";
-patching_description = "EeveeSpotify intercepts requests to load user data, deserializes it, and modifies the parameters in real-time.
+do_not_patch_premium = "Disable Premium Patch";
+patching_description = "Spotify+🗿 intercepts requests to load user data, deserializes it, and modifies the parameters in real-time.
 
-If you have an active Premium subscription, you can turn on Do Not Patch Premium. The tweak won't patch the data or restrict the use of Premium server-sided features.
+If you have an active Premium subscription, you can enable \"Do Not Patch Premium\". The tweak won't patch the data or restrict the use of server-side Premium features.
 
 %@";
 
-overwrite_configuration = "Overwrite Configuration";
-overwrite_configuration_description = "Replace remote configuration with the dumped Premium one. This configuration defines most UI/UX parameters and may be helpful, although it could cause issues.";
+overwrite_configuration = "Force Spotify+🗿";
+overwrite_configuration_description = "Force the Premium configuration. This configuration defines most UI/UX parameters and can be helpful, although it might cause issues.";
 
 // Lyrics
 
 do_not_replace_lyrics = "Do Not Replace Lyrics";
 lyrics_source = "Lyrics Source";
-lyrics_source_description = "You can select the lyrics source you prefer.
+lyrics_source_description = "You can select the desired lyrics source.
 
-Genius: Offers the best quality lyrics, provides the most songs, and updates lyrics the fastest. Does not and will never be time-synced.
+Genius: Provides high-quality lyrics, covers most songs, and updates lyrics the fastest. No time-synced lyrics, ever.
 
-LRCLIB: The most open service, offering time-synced lyrics. However, it lacks lyrics for many songs.
+LRCLIB: The most open service providing time-synced lyrics. However, many songs lack lyrics.
 
-Musixmatch: The service Spotify uses. Provides time-synced lyrics for many songs, but you'll need a user token to use this source.";
-lyrics_additional_info = "If EeveeSpotify is unable to find a song or process the lyrics, you'll see a \"Couldn't load the lyrics for this song\" message. The lyrics might be wrong for some songs when using Genius due to how the tweak searches songs. I've made it work in most cases.";
-petitlyrics_description = "PetitLyrics: Offers plenty of time-synced Japanese and some international lyrics.";
+Musixmatch: The service used by Spotify. Provides time-synced lyrics for many songs but requires a user token to use this source.";
+lyrics_additional_info = "If Spotify+🗿 cannot find a song or process the lyrics, the message \"The lyrics for this song could not be loaded\" will be displayed. With Genius, some lyrics might be incorrect as the tweak searches for songs in a specific way. However, it works in most cases.";
+petitlyrics_description = "PetitLyrics: Provides many time-synced Japanese and some international lyrics.";
 
 musixmatch_user_token = "Musixmatch User Token";
-user_token_placeholder = "Enter User Token or Paste Debug Info";
+user_token_placeholder = "Enter user token or paste debug info";
 
 enter_user_token = "Enter User Token";
-enter_user_token_message = "In order to use Musixmatch, you need to retrieve your user token from the official app. Download Musixmatch from the App Store, sign up, then go to Settings > Get help > Copy debug info, and paste it here. You can also extract the token using MITM.";
+enter_user_token_message = "To use Musixmatch, you must retrieve your user token from the official app. Download Musixmatch from the App Store, log in, go to Settings > Help > Copy Debug Info and paste it here. Alternatively, you can extract the token using MITM.";
 
 genius_fallback = "Genius Fallback";
 genius_fallback_description = "Load lyrics from Genius if there is a problem with %@.";
@@ -56,20 +56,20 @@ genius_fallback_description = "Load lyrics from Genius if there is a problem wit
 show_fallback_reasons = "Show Fallback Reasons";
 
 hide_lyrics_on_error = "Hide on Error";
-hide_lyrics_on_error_description = "Remove the lyrics component if lyrics fail to load.";
+hide_lyrics_on_error_description = "Remove the lyrics display if loading fails.";
 
 romanized_lyrics = "Romanized Lyrics";
-romanized_lyrics_description = "Display romanized lyrics for Japanese, Korean, and Chinese.";
+romanized_lyrics_description = "Show romanized lyrics for Japanese, Korean, and Chinese songs.";
 
 musixmatch_language = "Musixmatch Lyrics Language";
-musixmatch_language_description = "You can enter a 2-letter Musixmatch language code and see translated lyrics on Musixmatch if they are available.";
+musixmatch_language_description = "You can enter a two-letter Musixmatch language code to see translated lyrics on Musixmatch, if available.";
 
 // UI
 
 lyrics_background_color_section = "Lyrics Background Color";
-lyrics_background_color_section_description = "If you turn on Display Original Colors, the lyrics will appear in the original Spotify colors for tracks that have them.
+lyrics_background_color_section_description = "If you enable \"Display Original Colors\", lyrics will be shown in the original Spotify colors for songs that have them.
 
-You can set a static color or a normalization factor based on the extracted track cover's color. This factor determines how much dark colors are lightened and light colors are darkened. Generally, you will see lighter colors with a higher normalization factor.";
+You can set a static color or a normalization factor based on the extracted track cover color. This factor determines how dark colors are lightened and light colors are darkened. Higher factors usually result in lighter colors.";
 
 display_original_colors = "Display Original Colors";
 
@@ -77,43 +77,41 @@ use_static_color = "Use Static Color";
 static_color = "Static Color";
 
 color_normalization_factor = "Color Normalization Factor";
-dark_popups = "Dark PopUps";
+dark_popups = "Dark Pop-ups";
 
 // Experiments
-
 show_instagram_destination = "Show Instagram Destination";
-show_instagram_destination_description = "Always show the Instagram share destination. %@";
-
+show_instagram_destination_description = "Always show the Instagram sharing destination. %@";
 livecontainer_sharing = "Share to LiveContainer";
 livecontainer_sharing_description = "Share to LiveContainer and copy the URL if the selected destination is not supported.";
 
 /* MARK: Premium PopUps */
 
-have_premium_popup = "It looks like you have an active Premium subscription, so the tweak won't patch the data or restrict the use of Premium server-sided features. You can manage this in the EeveeSpotify settings.";
+have_premium_popup = "It looks like you have an active Premium subscription. The tweak will therefore not patch the data or restrict the use of server-side Premium features. You can manage this in the Spotify+🗿 settings.";
 
-high_audio_quality_popup = "Very high audio quality is server-sided and is not available with this tweak.";
-playlist_downloading_popup = "Native playlist downloading is server-sided and is not available with this tweak. You can download podcast episodes and local playlists though.";
-download_local_playlist = "Download local playlist";
+high_audio_quality_popup = "Very high audio quality is server-side and not available with this tweak.";
+playlist_downloading_popup = "Downloading native playlists is server-side and not available. However, podcast episodes and local playlists can be downloaded.";
+download_local_playlist = "Download Local Playlist";
 
 //
 
-could_not_share_popup = "Couldn’t share to the selected destination or LiveContainer. The URL has been copied.";
+could_not_share_popup = "Sharing to the desired destination or LiveContainer is not possible. The URL has been copied.";
 
 /* MARK: Lyrics */
 
 fallback_attribute = "Fallback";
 romanized_attribute = "Romanized";
 
-musixmatch_unauthorized_popup = "The tweak is unable to load lyrics from Musixmatch due to Unauthorized error. Please check or update your Musixmatch token. If you use an iPad, you should get the token from the Musixmatch app for iPad.";
-musixmatch_restricted_popup = "The tweak is unable to load lyrics from Musixmatch because they are restricted. It's likely a copyright issue due to the US IP address, so you should change it if you're in the US or use a VPN.";
+musixmatch_unauthorized_popup = "The tweak cannot load lyrics from Musixmatch because an \"Unauthorized\" error occurred. Check your Musixmatch token or update it. If you are using an iPad, you should retrieve the token from the Musixmatch iPad app.";
+musixmatch_restricted_popup = "The tweak cannot load lyrics from Musixmatch because they are restricted. This is likely a copyright issue due to a US IP address. Change it or use a VPN if you are in the USA.";
 
 // Errors Titles
 
-no_such_song = "No Song Found";
+no_such_song = "No song found";
 musixmatch_restricted = "Restricted";
 invalid_musixmatch_token = "Unauthorized";
 decoding_error = "Decoding Error";
-no_current_track = "No Track Instance";
+no_current_track = "No track instance";
 unknown_error = "Unknown Error";
 
 // Instrumental Titles
@@ -123,19 +121,18 @@ let_the_music_play = "Let the music play...";
 
 // liked songs title, should match official spotify loc
 
-liked_songs = "Liked songs";
+liked_songs = "Liked Songs";
 
-contributors = "Contributors";
+contributors = "🧡 • Credits";
 
 request_anonymous_token = "Request Anonymous Token";
-request_anonymous_token_description = "Tap “Request Anonymous Token” to request a token from Musixmatch without authorization.";
+request_anonymous_token_description = "Tap \"Request Anonymous Token\" to request a token from Musixmatch without authorization.";
 
 lrclib_api = "Server Address";
 
 // Snapshot of your benefits, should match official spotify loc
 
 ad_free_music_listening = "Ad-free music listening";
-play_songs_in_any_order = "Play songs in any order";
-organize_listening_queue = "Organize listening queue";
-
-payment_notice = "EeveeSpotify applies patches to unlock certain Premium features. It's free.";
+play_songs_in_any_order = "Play music in any order";
+organize_listening_queue = "Customize queue";
+payment_notice = "🗿 heyFordy's Spotify+ applies patches to unlock certain Premium features. It's free.";

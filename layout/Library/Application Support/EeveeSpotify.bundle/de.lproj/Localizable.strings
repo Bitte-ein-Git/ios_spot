@@ -1,33 +1,34 @@
 /* MARK: Settings */
 
 patching = "Patching";
-lyrics = "Lyrics";
-customization = "Anpassung";
+lyrics = "Lyrics-Quelle";
+customization = "UI-Anpassungen";
+experiments = "Experimentelles";
 
-common_issues_tip_title = "Hast du Probleme?";
+common_issues_tip_title = "» heyFordy's Spotify+ 🗿";
 
-common_issues_tip_message = "Wenn du ein Problem hast, wie z. B., dass du keine Songs abspielen kannst, solltest du dir das anschauen:";
-common_issues_tip_button = "Häufige Probleme";
+common_issues_tip_message = "Das ist meine angepasste Version der Spotify Premium Mod \"EeveeSpotifyReborn\". Weitere Apps findest du in meiner";
+common_issues_tip_button = "SideStore Repository";
 
-reset_data = "Daten zurücksetzen";
+reset_data = "Zwischenspeicher leeren";
 reset_data_description = "Zwischengespeicherte Daten löschen und die App neu starten.";
 
-checking_for_update = "Suche nach Updates...";
-update_available = "Update verfügbar";
+checking_for_update = "🌀 Suche nach Updates...";
+update_available = "🔸 Update verfügbar!";
 
 restart_is_required_description = "Ein Neustart der App ist erforderlich, um die Änderungen zu übernehmen.";
 
 // Patching
 
-do_not_patch_premium = "Premium nicht patchen";
-patching_description = "EeveeSpotify fängt Anfragen ab, um Benutzerdaten zu laden, deserialisiert sie und ändert die Parameter in Echtzeit.
+do_not_patch_premium = "Premium Patch deaktivieren";
+patching_description = "Spotify+🗿 fängt Anfragen ab, um Benutzerdaten zu laden, deserialisiert sie und ändert die Parameter in Echtzeit.
 
 Wenn du ein aktives Premium-Abonnement hast, kannst du „Premium nicht patchen“ aktivieren. Der Tweak wird die Daten nicht patchen oder die Nutzung von serverseitigen Premium-Funktionen einschränken.
 
 %@";
 
-overwrite_configuration = "Konfiguration überschreiben";
-overwrite_configuration_description = "Ersetze die Remote-Konfiguration mit der Premium-Konfiguration. Diese Konfiguration definiert die meisten UI/UX-Parameter und kann hilfreich sein, obwohl sie Probleme verursachen könnte.";
+overwrite_configuration = "Spotify+🗿 erzwingen";
+overwrite_configuration_description = "Erzwingg die Premium-Konfiguration. Diese Konfiguration definiert die meisten UI/UX-Parameter und kann hilfreich sein, obwohl sie Probleme verursachen könnte.";
 
 // Lyrics
 
@@ -40,7 +41,7 @@ Genius: Bietet qualitativ hochwertige Lyrics, deckt die meisten Songs ab und akt
 LRCLIB: Der offenste Dienst, der zeitsynchronisierte Lyrics bietet. Hat jedoch bei vielen Songs keine Lyrics.
 
 Musixmatch: Der von Spotify verwendete Dienst. Bietet zeitsynchronisierte Lyrics für viele Songs, erfordert jedoch einen Benutzertoken, um diese Quelle zu verwenden.";
-lyrics_additional_info = "Wenn EeveeSpotify keinen Song findet oder die Lyrics nicht verarbeiten kann, wird die Meldung „Die Lyrics für diesen Song konnten nicht geladen werden“ angezeigt. Bei Genius könnten einige Lyrics falsch sein, da der Tweak Songs auf eine bestimmte Weise durchsucht. In den meisten Fällen funktioniert es jedoch.";
+lyrics_additional_info = "Wenn Spotify+🗿 keinen Song findet oder die Lyrics nicht verarbeiten kann, wird die Meldung „Die Lyrics für diesen Song konnten nicht geladen werden“ angezeigt. Bei Genius könnten einige Lyrics falsch sein, da der Tweak Songs auf eine bestimmte Weise durchsucht. In den meisten Fällen funktioniert es jedoch.";
 petitlyrics_description = "PetitLyrics: Bietet viele zeitsynchronisierte japanische und einige internationale Lyrics.";
 
 musixmatch_user_token = "Musixmatch-Benutzertoken";
@@ -86,7 +87,7 @@ livecontainer_sharing_description = "An LiveContainer teilen und URL kopieren, w
 
 /* MARK: Premium PopUps */
 
-have_premium_popup = "Es sieht so aus, als ob du ein aktives Premium-Abonnement hast. Der Tweak wird die Daten daher nicht patchen oder die Nutzung von serverseitigen Premium-Funktionen einschränken. Du kannst dies in den EeveeSpotify-Einstellungen verwalten.";
+have_premium_popup = "Es sieht so aus, als ob du ein aktives Premium-Abonnement hast. Der Tweak wird die Daten daher nicht patchen oder die Nutzung von serverseitigen Premium-Funktionen einschränken. Du kannst dies in den Spotify+🗿-Einstellungen verwalten.";
 
 high_audio_quality_popup = "Sehr hohe Audioqualität ist serverseitig und mit diesem Tweak nicht verfügbar.";
 playlist_downloading_popup = "Das Herunterladen von nativen Playlists ist serverseitig und nicht verfügbar. Podcast-Episoden und lokale Playlists können jedoch heruntergeladen werden.";
@@ -122,7 +123,7 @@ let_the_music_play = "Lass die Musik spielen...";
 
 liked_songs = "Lieblingssongs";
 
-contributors = "Collaborator";
+contributors = "🧡 • Credits";
 
 request_anonymous_token = "Anonymes Token anfordern";
 request_anonymous_token_description = "Tippe auf „Anonymes Token anfordern“, um ein Token von Musixmatch ohne Autorisierung anzufordern.";
@@ -133,6 +134,6 @@ lrclib_api = "Server Adresse";
 
 ad_free_music_listening = "Werbefrei Musik hören";
 play_songs_in_any_order = "Musik in beliebiger Reihenfolge abspielen";
-organize_listening_queue = "Wiedergabeliste anpassen";
-payment_notice = "EeveeSpotify wendet Patches an, um bestimmte Premium-Funktionen freizuschalten. Es ist kostenlos.";
+organize_listening_queue = "Warteschlange anpassen";
+payment_notice = "🗿 heyFordy's Spotify+ wendet Patches an, um bestimmte Premium-Funktionen freizuschalten. Es ist kostenlos.";
  

@@ -1,5 +1,23 @@
 [
     {
+        "title": "Spotify+🗿",
+        "shuffled": false,
+        "contributors": [
+            {
+                "username": "Bitte ein Git!",
+                "roles": [
+                    "Fork Organization"
+                ]
+            },
+            {
+                "username": "elias1731",
+                "roles": [
+                    "Repo Maintainer"
+                ]
+            }
+        ]
+    },
+    {
         "title": "Development",
         "shuffled": false,
         "contributors": [
