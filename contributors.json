@@ -4,6 +4,18 @@
         "shuffled": false,
         "contributors": [
             {
+                "username": "Bitte-ein-Git",
+                "roles": [
+                    "Fork Organization"
+                ]
+            },
+            {
+                "username": "elias1731",
+                "roles": [
+                    "Repo Maintainer"
+                ]
+            },
+            {
                 "username": "whoeevee",
                 "roles": [
                     "Owner",
