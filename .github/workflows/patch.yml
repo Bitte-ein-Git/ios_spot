@@ -11,6 +11,10 @@ on:
         description: "Target App Version for Output (e.g. 4.2.0)"
         required: true
         default: "6.2.2"
+      BUILD_VERSION: # Optional input for build version
+        description: "Target Build Version for SideStore (e.g. 2)"
+        required: false
+        default: ""
 
 env:
   THEOS: ${{ github.workspace }}/theos
@@ -78,6 +82,17 @@ jobs:
             -k spot.png \
             -f "$TWEAK_DEB" "${{ env.ORION_DEB }}" "${{ env.PROTO_DEB }}" "${{ env.EXT_PATH }}" \
             -u -w
+
+      - name: ⚙️ Bump CFBundleVersion in Output IPA # Run conditionally if BUILD_VERSION is provided
+        if: inputs.BUILD_VERSION != ''
+        run: |
+          IPA_FILE="FordySpot_v${{ inputs.APP_VERSION }}.ipa"
+          unzip -q "$IPA_FILE" -d extracted_ipa
+          plutil -replace CFBundleVersion -string "${{ inputs.BUILD_VERSION }}" extracted_ipa/Payload/*.app/Info.plist
+          cd extracted_ipa
+          zip -qr "../$IPA_FILE" Payload
+          cd ..
+          rm -rf extracted_ipa
 
       - name: 🚀 Upload Final IPA
         uses: softprops/action-gh-release@v2

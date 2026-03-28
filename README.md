@@ -1,6 +1,6 @@
 <div align="center">
   <br>
-  <img src="https://repo.heyfordy.de/assets/FordySpot.png" alt="Logo" width="200">
+  <img src="https://repo.heyfordy.dev/assets/FordySpot.png" alt="Logo" width="200">
   <br><br>
 
   <h1>heyFordy's Spotify+🗿</h1>

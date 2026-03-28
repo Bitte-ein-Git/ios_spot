@@ -18,7 +18,7 @@ struct CommonIssuesTipView: View {
                     
                     Link(
                         destination: URL(
-                            string: "https://repo.heyfordy.de"
+                            string: "https://repo.heyfordy.dev"
                         )!,
                         label: {
                             VStack {
