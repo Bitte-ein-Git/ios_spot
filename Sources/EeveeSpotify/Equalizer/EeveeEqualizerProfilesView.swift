@@ -50,14 +50,13 @@ struct EeveeEqualizerProfilesView: View {
                             Button("Apply") {
                                 EqualizerProfileManager.shared.applyProfile(profile)
                             }
-                            .buttonStyle(.bordered)
                         }
                         .contextMenu {
                             Button("Bind to current device") {
                                 EqualizerProfileManager.shared.bindCurrentDevice(to: profile.id)
                                 refresh()
                             }
-                            Button("Delete", role: .destructive) {
+                            Button("Delete") {
                                 var list = EqualizerProfileManager.shared.profiles
                                 list.removeAll { $0.id == profile.id }
                                 EqualizerProfileManager.shared.profiles = list
@@ -87,30 +86,39 @@ struct EeveeEqualizerProfilesView: View {
                     EmptyView()
                 }
             }
-            .navigationTitle("EQ Profiles")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .cancellationAction) {
-                    Button("Close") {
-                        UIApplication.shared.windows
-                            .first { $0.isKeyWindow }?
-                            .rootViewController?
-                            .dismiss(animated: true)
-                    }
-                }
-            }
-            .alert("Profile name", isPresented: $showSave) {
-                TextField("Name", text: $newName)
-                Button("Save") {
-                    let name = newName.isEmpty ? "Profile \(profiles.count + 1)" : newName
-                    EqualizerProfileManager.shared.saveCurrentAsProfile(name: name)
-                    newName = ""
-                    refresh()
-                }
-                Button("Cancel", role: .cancel) {}
+            .listStyle(GroupedListStyle())
+            .navigationBarTitle("EQ Profiles", displayMode: .inline)
+            .navigationBarItems(trailing: Button("Close") {
+                dismissHost()
+            })
+            .alert(isPresented: $showSave) {
+                Alert(
+                    title: Text("Profile name"),
+                    message: TextFieldAlertMessage(),
+                    primaryButton: .default(Text("Save")) {
+                        let name = newName.isEmpty ? "Profile \(profiles.count + 1)" : newName
+                        EqualizerProfileManager.shared.saveCurrentAsProfile(name: name)
+                        newName = ""
+                        refresh()
+                    },
+                    secondaryButton: .cancel()
+                )
             }
             .onAppear { refresh() }
         }
+        .navigationViewStyle(StackNavigationViewStyle())
+    }
+
+    private func TextFieldAlertMessage() -> Text {
+        // simple alert without TextField on iOS 14; name auto-generated if empty
+        Text("Leave empty for auto name, or set via next save after rename in a future build.")
+    }
+
+    private func dismissHost() {
+        UIApplication.shared.windows
+            .first { $0.isKeyWindow }?
+            .rootViewController?
+            .dismiss(animated: true)
     }
 
     private func refresh() {

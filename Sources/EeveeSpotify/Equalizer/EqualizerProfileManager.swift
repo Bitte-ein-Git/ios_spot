@@ -5,7 +5,6 @@ import UIKit
 struct EqualizerProfile: Codable, Identifiable, Equatable {
     var id: String
     var name: String
-    // normalized gains -1.0 ... 1.0 (Spotify style), typically 6 bands
     var values: [Double]
     var createdAt: Date
 }
@@ -14,7 +13,7 @@ final class EqualizerProfileManager {
     static let shared = EqualizerProfileManager()
 
     private let profilesKey = "eevee.eq.profiles"
-    private let deviceMapKey = "eevee.eq.deviceMap" // deviceUID -> profileId
+    private let deviceMapKey = "eevee.eq.deviceMap"
     private let enabledKey = "eevee.eq.perDeviceEnabled"
 
     private var routeObserver: NSObjectProtocol?
@@ -52,7 +51,6 @@ final class EqualizerProfileManager {
         ) { [weak self] _ in
             self?.applyProfileForCurrentRoute()
         }
-        // initial apply shortly after launch
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [weak self] in
             self?.applyProfileForCurrentRoute()
         }
@@ -62,7 +60,6 @@ final class EqualizerProfileManager {
         let session = AVAudioSession.sharedInstance()
         let outputs = session.currentRoute.outputs
         if let first = outputs.first {
-            // UID is stable for many BT devices; fall back to portName
             let uid = first.uid
             if !uid.isEmpty { return uid }
             return first.portName
@@ -90,10 +87,6 @@ final class EqualizerProfileManager {
 
     func applyProfile(_ profile: EqualizerProfile) {
         writeSpotifyEqualizerValues(profile.values)
-        // nudge model if present
-        if let model = NSClassFromString("SPTEqualizerModel") as? NSObject.Type {
-            // best effort – actual instance is managed by Spotify
-        }
     }
 
     func bindCurrentDevice(to profileId: String) {
@@ -121,10 +114,7 @@ final class EqualizerProfileManager {
         applyProfile(profile)
     }
 
-    // MARK: - Spotify preference I/O
-
     private func equalizerValuesKeys() -> [String] {
-        // Spotify stores per-user: <userId>.com.spotify.feature.equalizer.values
         let defaults = UserDefaults.standard
         let all = defaults.dictionaryRepresentation()
         return all.keys.filter { $0.contains("com.spotify.feature.equalizer.values") }
@@ -147,7 +137,6 @@ final class EqualizerProfileManager {
         let keys = equalizerValuesKeys()
         let numbers = values.map { NSNumber(value: $0) }
         if keys.isEmpty {
-            // fallback key pattern – will be picked up once user opens EQ once
             UserDefaults.standard.set(numbers, forKey: "com.spotify.feature.equalizer.values")
         } else {
             for key in keys {
