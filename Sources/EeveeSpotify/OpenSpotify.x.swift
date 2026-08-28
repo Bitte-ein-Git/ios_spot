@@ -9,6 +9,10 @@ class UIOpenURLContextHook: ClassHook<UIOpenURLContext> {
             return Foundation.URL(string: "https:/\(url.path)")!
         }
 
+        if EqualizerDeepLinkHandler.handle(url) {
+            return Foundation.URL(string: "spotify:")!
+        }
+
         return url
     }
 }
