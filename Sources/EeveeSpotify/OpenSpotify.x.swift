@@ -9,6 +9,24 @@ class UIOpenURLContextHook: ClassHook<UIOpenURLContext> {
             return Foundation.URL(string: "https:/\(url.path)")!
         }
 
+        if EqualizerDeepLinkHandler.handle(url) {
+            return Foundation.URL(string: "spotify:")!
+        }
+
         return url
+    }
+}
+
+class UIApplicationOpenURLHook: ClassHook<UIApplication> {
+    func openURL(
+        _ url: URL,
+        options: [UIApplication.OpenExternalURLOptionsKey: Any],
+        completionHandler completion: ((Bool) -> Void)?
+    ) {
+        if EqualizerDeepLinkHandler.handle(url) {
+            completion?(true)
+            return
+        }
+        orig.openURL(url, options: options, completionHandler: completion)
     }
 }

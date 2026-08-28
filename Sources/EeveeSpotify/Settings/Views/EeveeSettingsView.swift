@@ -35,8 +35,6 @@ struct EeveeSettingsView: View {
                 )
             }
             
-            //
-            
             Button {
                 pushSettingsController(
                     with: EeveePatchingSettingsView(),
@@ -72,7 +70,20 @@ struct EeveeSettingsView: View {
                 NavigationSectionView(
                     color: Color(hex: "#64D2FF"),
                     title: "customization".localized,
-                    imageSystemName: "paintpalette.fill"
+                    imageSystemName: "paintbrush.fill"
+                )
+            }
+
+            Button {
+                pushSettingsController(
+                    with: EeveeEqualizerProfilesView(),
+                    title: "EQ Profiles"
+                )
+            } label: {
+                NavigationSectionView(
+                    color: .green,
+                    title: "EQ Profiles",
+                    imageSystemName: "slider.horizontal.3"
                 )
             }
             
@@ -88,8 +99,6 @@ struct EeveeSettingsView: View {
                     imageSystemName: "sparkle"
                 )
             }
-            
-            //
             
             Section(footer: Text("reset_data_description".localized)) {
                 Button {

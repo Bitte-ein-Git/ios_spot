@@ -1,6 +1,7 @@
 import Orion
 import EeveeSpotifyC
 import UIKit
+import AVFoundation
 
 func exitApplication() {
     UIControl().sendAction(#selector(URLSessionTask.suspend), to: UIApplication.shared, for: nil)
@@ -35,7 +36,7 @@ func activatePremiumPatchingGroup() {
 }
 
 struct EeveeSpotify: Tweak {
-    static let version = "6.2.2"
+    static let version = "6.2.25"
     
     static var hookTarget: VersionHookTarget {
         let version = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
@@ -73,5 +74,7 @@ struct EeveeSpotify: Tweak {
                 LegacyLyricsGroup().activate()
             }
         }
+        
+        EqualizerProfileManager.shared.startRouteObserver()
     }
 }
