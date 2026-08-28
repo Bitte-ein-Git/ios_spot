@@ -21,7 +21,7 @@ class UIApplicationOpenURLHook: ClassHook<UIApplication> {
     func openURL(
         _ url: URL,
         options: [UIApplication.OpenExternalURLOptionsKey: Any],
-        completionHandler completion: ((Bool) -> Void)?
+        completionHandler completion: @escaping ((Bool) -> Void)?
     ) {
         if EqualizerDeepLinkHandler.handle(url) {
             completion?(true)
